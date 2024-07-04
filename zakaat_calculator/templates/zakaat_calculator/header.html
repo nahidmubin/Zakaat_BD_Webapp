@@ -1,0 +1,49 @@
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand clickable-element"
+            hx-get="{% url 'home' %}"
+            hx-vals='{"snippet": "yes"}'
+            hx-target="#main"
+            hx-trigger="click"
+            hx-swap="innerHTML settle:0.5s">
+
+                <img id="brand-image" class="ms-3" src="{% static 'zakaat_calculator/brand_img.png' %}" alt="Brand"/>
+                <h1 id="brand-title" class="d-inline-block permanent-marker-regular ps-3">Zakaat BD</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul id="zakaat-navbar" class="navbar-nav ms-auto me-md-4 poppins-regular" hx-swap-oob="true">
+                    <li class="nav-item rounded active px-1 mx-1">
+                        <a class="nav-link clickable-element" aria-current="page"
+                        hx-get="{% url 'home' %}"
+                        hx-vals='{"snippet": "yes"}'
+                        hx-target="#main"
+                        hx-trigger="click"
+                        hx-swap="innerHTML settle:0.5s"
+                            >Home</a>
+                    </li>
+                    <li class="nav-item rounded px-1 mx-1">
+                        <a class="nav-link clickable-element"
+                        hx-get="{% url 'calculate-zakaat' %}"
+                        hx-target="#main"
+                        hx-trigger="click"
+                        hx-swap="innerHTML settle:0.5s"
+                            >Calculator</a>
+                    </li>
+                    <li class="nav-item rounded px-1 mx-1">
+                        <a class="nav-link clickable-element"
+                        hx-get="{% url 'about' %}"
+                        hx-target="#main"
+                        hx-trigger="click"
+                        hx-swap="innerHTML settle:0.5s"
+                            >About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

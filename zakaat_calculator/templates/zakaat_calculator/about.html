@@ -1,0 +1,80 @@
+<ul id="zakaat-navbar" class="navbar-nav ms-auto me-md-4 poppins-regular" hx-swap-oob="true">
+    <li class="nav-item rounded px-1 mx-1">
+        <a class="nav-link clickable-element" aria-current="page"
+        hx-get="{% url 'home' %}"
+        hx-vals='{"snippet": "yes"}'
+        hx-target="#main"
+        hx-trigger="click"
+        hx-swap="innerHTML settle:0.5s"
+            >Home</a>
+    </li>
+    <li class="nav-item rounded px-1 mx-1">
+        <a class="nav-link clickable-element"
+        hx-get="{% url 'calculate-zakaat' %}"
+        hx-target="#main"
+        hx-trigger="click"
+        hx-swap="innerHTML settle:0.5s"
+            >Calculator</a>
+    </li>
+    <li class="nav-item rounded px-1 mx-1 active">
+        <a class="nav-link clickable-element"
+        hx-get="{% url 'about' %}"
+        hx-target="#main"
+        hx-trigger="click"
+        hx-swap="innerHTML settle:0.5s"
+            >About</a>
+    </li>
+</ul>
+
+<section id="zakaat-result" class="min-vh-100 pt-5 bg-light fade-me-in">
+    <h2 class="poppins-bold border-bottom border-warning text-center py-3 mx-5"> About</h2>
+    <div class="container px-5 pt-3 poppins-regular">
+        Zakaat BD is a Website that calculates Zakaat for people living in Bangladesh where one don't have to know the Gold and Silver price.
+        It automatically retrieves Gold and Silver prices from BAJUS's website and calculate the nisaab(Threshold Price) and the price of your Gold and Silver.
+        This website isn't applicable for people outside of Bangladesh. This Website was made as a hobby project.
+        <div class="alert alert-warning d-flex align-items-center mt-3" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Use this website for rough estimation of Zakaat.
+            Please consult with a scholar or an expert for the final estimation.
+        </div>
+    </div>
+
+    <h2 class="poppins-bold border-bottom border-warning text-center py-3 mx-5"> Informations</h2>
+    <div class="container px-5 pt-3 poppins-regular">
+        <ul>
+            <li>Gold and Silver Prices are extracted from Bangladesh Jewellers Association's website.</li>
+            <li>Selling price for Gold and Silver is taken as 20% less than the Buying price as this is rule in Bangladesh. </li>
+            <li>24K Gold and Silver price are extrapolated from 22K Gold and Silver price respectively.</li>
+            <li>1 Vori is taken as to be 11.664 gram.</li>
+            <li>Threshold of Zakaat for Gold is taken as 20 Mithqaal i.e. 85 grams of Pure Gold.</li>
+            <li>Threshold of Zakaat for Silver is taken as 200 Dirham i.e. 595 grams of Pure Silver.</li>
+            <li>Zakaat amount is 2.5% of the Zakaatable asset.</li>
+        </ul>
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+            </svg>
+            Threshold values in gram that has been used in this website, is according to Shaykh Salih Al-Munajjid's IslamQA website.
+            According to Mufti Yusuf Sultan these values are 87.48 gram and 612.36 gram for Gold and Silver respectively.
+            Check the refernces for details.
+        </div>
+    </div>
+
+    <h2 class="poppins-bold border-bottom border-warning text-center py-3 mx-5"> References</h2>
+    <div class="container px-5 pt-3 poppins-regular">
+        <ol class="list-group px-4 pb-3">
+            <li><a class="nav-link" target="_blank" href="https://www.bajus.org/gold-price">BAJUS's Gold and Silver Price</a></li>
+            <li><a class="nav-link" target="_blank" href="https://islamqa.info/en/answers/214221/">How to Calculate Zakah on Gold -islamqa</a></li>
+            <li><a class="nav-link" target="_blank" href="https://islamqa.info/bn/answers/64/">Minimum amount (nisab) required to pay zakat in dollars -islamqa</a></li>
+            <li><a class="nav-link" target="_blank" href="https://islamqa.info/bn/answers/145600/">Evidence That the Rate of Zakah is 2.5% -islamqa</a></li>
+            <li><a class="nav-link" target="_blank" href="https://yousufsultan.com/zakat-in-details/">ইসলামী অর্থনীতিতে যাকাতের ভূমিকা ও যাকাতের খুঁটিনাটি</a></li>
+            <li><a class="nav-link" target="_blank" href="https://www.youtube.com/watch?v=bW4oyoUd7TM">যাকাত কীভাবে হিসাব করতে হয়? ইউসুফ সুলতান</a></li>
+            <li><a class="nav-link" target="_blank" href="https://www.youtube.com/watch?v=b3qcSUeUx2U">যাকাত কাকে দেয়া যায়? ইউসুফ সুলতান</a></li>
+            <li><a class="nav-link" target="_blank" href="https://www.youtube.com/watch?v=_YgN_LAfKrA">যাকাত হিসাব করার টেমপ্লেট - গুগল / এক্সেল শিট</a></li>
+            <li><a class="nav-link" target="_blank" href="https://goo.gl/3c5c6D">Mufti Yousuf Sultan's Zakaat Template link - Google Sheet</a></li>
+            <li><a class="nav-link" target="_blank" href="https://goo.gl/e9NbkT">Mufti Yousuf Sultan's Zakaat Template link - Excel</a></li>
+        </ol>
+    </div>
+</section>

@@ -1,0 +1,188 @@
+<ul id="zakaat-navbar" class="navbar-nav ms-auto me-md-4 poppins-regular" hx-swap-oob="true">
+    <li class="nav-item rounded px-1 mx-1">
+        <a class="nav-link clickable-element" aria-current="page"
+        hx-get="{% url 'home' %}"
+        hx-vals='{"snippet": "yes"}'
+        hx-target="#main"
+        hx-trigger="click"
+        hx-swap="innerHTML settle:0.5s"
+            >Home</a>
+    </li>
+    <li class="nav-item rounded px-1 mx-1 active">
+        <a class="nav-link clickable-element"
+        hx-get="{% url 'calculate-zakaat' %}"
+        hx-target="#main"
+        hx-trigger="click"
+        hx-swap="innerHTML settle:0.5s"
+            >Calculator</a>
+    </li>
+    <li class="nav-item rounded px-1 mx-1">
+        <a class="nav-link clickable-element"
+        hx-get="{% url 'about' %}"
+        hx-target="#main"
+        hx-trigger="click"
+        hx-swap="innerHTML settle:0.5s"
+            >About</a>
+    </li>
+</ul>
+
+<section id="zakaat-form" class="min-vh-100 pt-5 bg-light fade-me-in">
+    {% if invalid %}
+        <div id="invalid-alert" class="alert alert-danger d-flex align-items-center mx-5 text-center" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+            Please enter valid data.
+        </div>
+    {% endif %}
+    <h2 class="poppins-bold border-bottom border-warning text-center py-3 mx-5"> Calculate Your Zakaat</h2>
+    <form class="d-flex flex-column container px-5 pb-5 poppins-regular"
+    hx-post="{% url 'calculate-zakaat' %}"
+    hx-target="#main"
+    hx-swap="innerHTML settle:0.5s">
+
+        {% csrf_token %}
+        <div id="gold-asset" class="d-flex flex-column border-bottom border-warning py-5">
+            <h6 class="poppins-bold text-center pb-3">Enter the amount of Gold that you have</h6>
+            <div id="gold-form" class="col-12 gx-3 gy-2 align-items-center">
+                <div id="gold-form-gram" class="row border rounded-1 border-secondary-subtle p-3 mb-3">
+                    <h6 class="poppins-medium text-center">Gold in Gram</h6>
+                    <div class="mb-3 col-md-3">
+                        <label for="22k-gold-gram" class="form-label ms-3">22 Karat</label>
+                        {{form.gold_22k_gram}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="21k-gold-gram" class="form-label ms-3">21 Karat</label>
+                        {{form.gold_21k_gram}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="18k-gold-gram" class="form-label ms-3">18 Karat</label>
+                        {{form.gold_18k_gram}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="trad-gold-gram" class="form-label ms-3">Traditional</label>
+                        {{form.gold_trad_gram}}    
+                    </div>
+                </div>
+                
+                <div id="gold-form-vori" class="row border rounded-1 border-secondary-subtle p-3 mb-3">
+                    <h6 class="poppins-medium text-center">Gold in Vori</h6>
+                    <div class="mb-3 col-md-3">
+                        <label for="22k-gold-vori" class="form-label ms-3">22 Karat</label>
+                        {{form.gold_22k_vori}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="21k-gold-vori" class="form-label ms-3">21 Karat</label>
+                        {{form.gold_21k_vori}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="18k-gold-vori" class="form-label ms-3">18 Karat</label>
+                        {{form.gold_18k_vori}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="trad-gold-vori" class="form-label ms-3">Traditional</label>
+                        {{form.gold_trad_vori}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="silver-asset" class="d-flex flex-column border-bottom border-warning py-5">
+            <h6 class="poppins-bold text-center pb-3">Enter the amount of Silver that you have</h6>
+            <div id="silver-form" class="col-12 gx-3 gy-2 align-items-center ">
+                <div id="silver-form-gram" class="row border rounded-1 border-secondary-subtle p-3 mb-3">
+                    <h6 class="poppins-medium text-center">Silver in Gram</h6>
+                    <div class="mb-3 col-md-3">
+                        <label for="22k-silver-gram" class="form-label ms-3">22 Karat</label>
+                        {{form.silver_22k_gram}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="21k-silver-gram" class="form-label ms-3">21 Karat</label>
+                        {{form.silver_21k_gram}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="18k-silver-gram" class="form-label ms-3">18 Karat</label>
+                        {{form.silver_18k_gram}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="trad-silver-gram" class="form-label ms-3">Traditional</label>
+                        {{form.silver_trad_gram}}
+                    </div>
+                </div>
+                
+                <div id="silver-form-vori" class="row border rounded-1 border-secondary-subtle p-3 mb-3">
+                    <h6 class="poppins-medium text-center">Silver in Vori</h6>
+                    <div class="mb-3 col-md-3">
+                        <label for="22k-silver-vori" class="form-label ms-3">22 Karat</label>
+                        {{form.silver_22k_vori}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="21k-silver-vori" class="form-label ms-3">21 Karat</label>
+                        {{form.silver_21k_vori}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="18k-silver-vori" class="form-label ms-3">18 Karat</label>
+                        {{form.silver_18k_vori}}
+                    </div>
+                    <div class="mb-3 col-md-3">
+                        <label for="trad-silver-vori" class="form-label ms-3">Traditional</label>
+                        {{form.silver_trad_vori}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cash-bank-asset" class="d-flex flex-column border-bottom border-warning py-5">
+            <h6 class="poppins-bold text-center pb-3">Enter the amount of your Cash, Bank Balance or other Liquid Money in Taka</h6>
+            <div class="row gx-3 gy-2 align-items-center border rounded-1 border-secondary-subtle p-3">
+                <div class="col-md-3">
+                    <label for="cash" class="form-label ms-3">Cash</label>
+                    {{form.cash}}
+                </div>
+                <div class="col-md-3">
+                    <label for="bank-balance" class="form-label ms-3">Bank Balance</label>
+                    {{form.bank_balance}}
+                </div>
+                <div class="col-md-3">
+                    <label for="liquid-money" class="form-label ms-3">Any Other Liquid Money</label>
+                    {{form.liquid_money}}
+                </div>
+            </div>
+        </div>
+
+
+        <div id="business-asset" class="d-flex flex-column border-bottom border-warning py-5">
+            <h6 class="poppins-bold text-center pb-3">Enter present selling value of assets in Taka that were purchased at the intention of selling again</h6>
+            <div class="row gx-3 gy-2 align-items-center border rounded-1 border-secondary-subtle p-3">
+                <div class="col-md-3">
+                    <label for="business-money" class="form-label ms-3">Business Asset</label>
+                    {{form.business_asset}}
+                </div>
+                <div class="col-md-3">
+                    <label for="stock-money" class="form-label ms-3">Stock</label>
+                    {{form.stock}}
+                </div>
+            </div>
+        </div>
+
+
+        <div id="debts" class="d-flex flex-column border-bottom border-warning py-5">
+            <h6 class="poppins-bold text-center pb-3">Enter all the debts in Taka that are payable within next one lunar year</h6>
+            <div class="row gx-3 gy-2 align-items-center border rounded-1 border-secondary-subtle p-3">
+                <div class="col-md-3">
+                    <label for="debt-money" class="form-label ms-3">Debts</label>
+                    {{form.debt}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-auto ms-auto me-auto mt-5">
+            <button type="submit" class="btn btn-warning poppins-regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                </svg>
+                Submit
+            </button>
+        </div>
+    </form>
+</section>

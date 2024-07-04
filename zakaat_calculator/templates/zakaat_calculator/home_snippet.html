@@ -1,0 +1,171 @@
+{% load humanize %}
+{% load mathfilters %}
+{% load static %}
+
+
+{% if snippet == 'yes' %}
+    <ul id="zakaat-navbar" class="navbar-nav ms-auto me-md-4 poppins-regular" hx-swap-oob="true">
+        <li class="nav-item rounded px-1 mx-1 active">
+            <a class="nav-link clickable-element" aria-current="page"
+            hx-get="{% url 'home' %}"
+            hx-vals='{"snippet": "yes"}'
+            hx-target="#main"
+            hx-trigger="click"
+            hx-swap="innerHTML settle:0.5s"
+                >Home</a>
+        </li>
+        <li class="nav-item rounded px-1 mx-1">
+            <a class="nav-link clickable-element"
+            hx-get="{% url 'calculate-zakaat' %}"
+            hx-target="#main"
+            hx-trigger="click"
+            hx-swap="innerHTML settle:0.5s"
+                >Calculator</a>
+        </li>
+        <li class="nav-item rounded px-1 mx-1">
+            <a class="nav-link clickable-element"
+            hx-get="{% url 'about' %}"
+            hx-target="#main"
+            hx-trigger="click"
+            hx-swap="innerHTML settle:0.5s"
+                >About</a>
+        </li>
+    </ul>
+{% endif %}
+    
+
+
+<section id="banner" class="min-vh-100 bg-light d-flex flex-column justify-content-center align-items-center border-bottom border-warning fade-me-in">
+    <div class="row h-100 mx-auto">
+        <div class="col-sm-12 col-md-6 col-lg-5 d-flex flex-column justify-content-center align-items-center p-5">
+            <img id="banner-img" class="img-fluid rounded-circle border border-3 border-secondary" src="{% static 'zakaat_calculator/banner.jpg' %}" alt="Giving Zakaat">
+            <p id="courtesy" class="poppins-regular-italic mt-2 text-center">Courtesy: The Muslim Show. <br>(Slightly Edited)</p>
+        </div>
+        <div id="verse-div" class="col-sm-12 col-md-6 col-lg-7 p-5 d-flex flex-column justify-content-center align-items-center">
+            <blockquote class="blockquote d-flex flex-column justify-content-center align-items-center">
+                <p class="poppins-regular verse mx-auto mb-5">“And establish prayer and give Zakat, and whatever good you put forward for yourselves - you will find it with Allah.”</p>
+                <footer class="poppins-regular verse mx-auto mb-5 me-5 blockquote-footer">Quran (2:110)</footer>
+            </blockquote>
+            <div class="d-flex justify-content-center align-items-center">
+                <button class="poppins-regular btn btn-warning mx-2"
+                hx-get="{% url 'calculate-zakaat' %}"
+                hx-target="#main"
+                hx-trigger="click"
+                hx-swap="innerHTML settle:0.5s"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                        <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    Calculate Zakaat
+                </button>
+
+                <a href="#nisaab">
+                    <button class="poppins-regular btn btn-warning mx-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                        </svg>
+                        Check Nisaab
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gs-price" class="min-vh-100 bg-light pt-5">
+    <h1 class="poppins-bold text-center mb-5 mx-1"> Gold & Silver Prices in BD 
+        <img width="40" src="{% static 'zakaat_calculator/bd_flag.png' %}" alt="Bangladesh-Flag"/>
+    </h1>
+    
+    <div class="row row poppins-regular d-flex justify-content-evenly">
+        <div id="g-card" class="card rounded-4 w-100 col-sm-6 mb-5">
+            <div class="card-body">
+                <h5 class="card-title poppins-bold text-center">Gold Price</h5>
+                <img class="gs-img d-block mx-auto mb-1" src="{% static 'zakaat_calculator/gold.png' %}" alt="Gold-Basket">
+                <p class="card-text">
+                    <table class="table table-sm table-bordered border-warning text-center">
+                        <thead>
+                            <tr>
+                                <th class="col-4" scope="col">Karat</th>
+                                <th class="col-4" scope="col">Buy</th>
+                                <th class="col-4" scope="col">Sell</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% for karat, price in buying_price.items %}
+                            
+                                {% if forloop.counter <= 5 %}
+                                    <tr 
+                                    {% if karat == '24K_G' %}
+                                        title="24K price is extrapolated from 22K price"
+                                    {% endif %}
+                                        >
+                                        <th scope="row">{{ karat|slice:":-2" }}</th>
+                                        <td>{{ price|floatformat:"0"|intcomma }}</td>
+                                        <td>{{ price|mul:0.8|floatformat:"0"|intcomma }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </p>
+                <div class="text-end">
+                    <small class="text-body-secondary">*Taka per gram Gold</small>
+                </div>
+            </div>
+            
+        </div>
+        <div id="s-card" class="card rounded-4 w-100 bg-secondary-subtle col-sm-6 mb-5">
+            <div class="card-body">
+                <h5 class="card-title poppins-bold text-center">Silver Price</h5>
+                <img class="gs-img d-block mx-auto mb-1" src="{% static 'zakaat_calculator/silver.png' %}" alt="">
+                <p class="card-text">
+                    <table class="table table-secondary table-sm table-bordered border-secondary text-center">
+                        <thead>
+                            <tr>
+                                <th class="col-4" scope="col">Karat</th>
+                                <th class="col-4" scope="col">Buy</th>
+                                <th class="col-4" scope="col">Sell</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for karat, price in buying_price.items %}
+                        
+                                {% if forloop.counter > 5 %}
+                                    <tr
+                                    {% if karat == '24K_S' %}
+                                        title="24K price is extrapolated from 22K price"
+                                    {% endif %}
+                                        >
+                                        <th scope="row">{{ karat|slice:":-2" }}</th>
+                                        <td>{{ price|floatformat:"0"|intcomma }}</td>
+                                        <td>{{ price|mul:0.8|floatformat:"0"|intcomma }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </p>
+                <div class="text-end">
+                    <small class="text-body-secondary">*Taka per gram Silver</small>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div id="nisaab" class="alert alert-warning d-inline-block align-items-center poppins-semibold text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+            </svg>
+            Current Nisaab (Threshold Price) for Zakaat is
+            <strong class="poppins-extrabold">{{ threshold_price|intcomma }}</strong> Taka
+        </div>
+    </div>
+    
+</section>
