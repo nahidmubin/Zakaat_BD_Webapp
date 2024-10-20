@@ -104,8 +104,8 @@
                                     {% endif %}
                                         >
                                         <th scope="row">{{ karat|slice:":-2" }}</th>
-                                        <td>{{ price|floatformat:"0"|intcomma }}</td>
-                                        <td>{{ price|mul:0.8|floatformat:"0"|intcomma }}</td>
+                                        <td>{{ price|mul:11.664|floatformat:"0"|intcomma }}</td>
+                                        <td>{{ price|mul:11.664|mul:0.8|floatformat:"0"|intcomma }}</td>
                                     </tr>
                                 {% endif %}
                             {% endfor %}
@@ -114,7 +114,7 @@
                     </table>
                 </p>
                 <div class="text-end">
-                    <small class="text-body-secondary">*Taka per gram Gold</small>
+                    <small class="text-body-secondary">*Taka per Vori Gold</small>
                 </div>
             </div>
             
@@ -142,8 +142,8 @@
                                     {% endif %}
                                         >
                                         <th scope="row">{{ karat|slice:":-2" }}</th>
-                                        <td>{{ price|floatformat:"0"|intcomma }}</td>
-                                        <td>{{ price|mul:0.8|floatformat:"0"|intcomma }}</td>
+                                        <td>{{ price|mul:11.664|floatformat:"0"|intcomma }}</td>
+                                        <td>{{ price|mul:11.664|mul:0.8|floatformat:"0"|intcomma }}</td>
                                     </tr>
                                 {% endif %}
                             {% endfor %}
@@ -151,7 +151,7 @@
                     </table>
                 </p>
                 <div class="text-end">
-                    <small class="text-body-secondary">*Taka per gram Silver</small>
+                    <small class="text-body-secondary">*Taka per Vori Silver</small>
                 </div>
             </div>
             
